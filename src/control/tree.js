@@ -3,7 +3,6 @@ import React from "react";
 
 const TreeView = (props) => {
   const { treeData } = props;
-  console.log("treeData", treeData);
   const rootRow = treeData[0];
 
   return (
@@ -26,7 +25,7 @@ const nodeRender = (data) => {
     <>
       {parentNodeRender(data)}
 
-      <ul>
+      <ul className="nested">
         {data.childrens.map((child) => {
           return nodeRender(child);
         })}
@@ -37,7 +36,7 @@ const nodeRender = (data) => {
 
 const parentNodeRender = (data) => {
   return (
-    <li>
+    <li className="caret">
       {data.name} - count - {data.childrens.length}
     </li>
   );
