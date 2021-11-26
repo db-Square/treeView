@@ -20,11 +20,11 @@
 }
 .item3 {
   grid-area: footer;
+  text-align: center;
 }
 
 .page-Layout > div {
   background-color: rgba(255, 255, 255, 0.8);
-  text-align: center;
   padding: 10px 0;
   font-size: 15px;
 }
