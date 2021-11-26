@@ -3,6 +3,7 @@ import React from "react";
 import { Form } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
 import TreeView from "../control/tree";
+
 import "./landing.css";
 
 export default class LandingPage extends React.Component {
@@ -24,19 +25,22 @@ export default class LandingPage extends React.Component {
       {
         id: 1,
         name: "Title1",
+        isOpen: false,
         childrens: [{ id: 3, name: "child0", childrens: [] }],
       },
       {
         id: 2,
         name: "Title2",
+        isOpen: false,
         childrens: [
-          { id: 3, name: "child1", childrens: [] },
+          { id: 3, name: "child1", childrens: [], isOpen: false },
           {
             id: 4,
             name: "child2",
+            isOpen: false,
             childrens: [
-              { id: 5, name: "child2.1", childrens: [] },
-              { id: 5, name: "child2.2", childrens: [] },
+              { id: 5, name: "child2.1", childrens: [], isOpen: false },
+              { id: 5, name: "child2.2", childrens: [], isOpen: false },
             ],
           },
         ],
@@ -44,17 +48,20 @@ export default class LandingPage extends React.Component {
       {
         id: 6,
         name: "Title3",
-        childrens: [{ id: 7, name: "child6.1", childrens: [] }],
+        isOpen: false,
+        childrens: [{ id: 7, name: "child6.1", isOpen: false, childrens: [] }],
       },
       {
         id: 8,
         name: "Title4",
+        isOpen: false,
         childrens: [],
       },
       {
         id: 9,
         name: "Title5",
-        childrens: [{ id: 10, name: "child9.1", childrens: [] }],
+        isOpen: false,
+        childrens: [{ id: 10, name: "child9.1", isOpen: false, childrens: [] }],
       },
     ];
 

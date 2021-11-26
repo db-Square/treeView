@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import ChildTree from "./childTree"
 // import "./tree.css";
 
 const TreeView = (props) => {
-  const { treeData } = props;
-  const rootRow = treeData[0];
+  const [getTreedata, setTreeData] = useState([]);
+  //   const { treeData } = props;
+
+  useEffect(() => {
+    const { treeData } = props;
+    setTreeData(treeData);
+  });
+
+  const rootRow = getTreedata[0];
 
   return (
     <div>
       <ul>
-        {treeData.map((s) => {
+        {getTreedata.map((s) => {
           return (
             <>
-              <ul>{nodeRender(s)}</ul>
+              <ul><ChildTree fullList={getTreedata} row={s} updateCollection={setTreeData}> </ChildTree></ul>
             </>
           );
         })}
@@ -20,26 +28,38 @@ const TreeView = (props) => {
   );
 };
 
-const nodeRender = (data) => {
-  return (
-    <>
-      {parentNodeRender(data)}
+// const onToggle = (data) => {
+//   console.log("clicked onToggle", data);
+//   let newArr = getTreedata.map((data) => {
+//     data.isOpen = data.name == it.name;
+//     return data;
+//   });
+//   setTreeData(newArr);
+// };
 
-      <ul className="nested">
-        {data.childrens.map((child) => {
-          return nodeRender(child);
-        })}
-      </ul>
-    </>
-  );
-};
+// const nodeRender = (data) => {
+//   return (
+//     <>
+//       {parentNodeRender(data)}
 
-const parentNodeRender = (data) => {
-  return (
-    <li className="caret">
-      {data.name} - count - {data.childrens.length}
-    </li>
-  );
-};
+//       <ul className="nested">
+//         {data.isOpen &&
+//           data.childrens.map((child) => {
+//             return nodeRender(child);
+//           })}
+//       </ul>
+//     </>
+//   );
+// };
+
+// const parentNodeRender = (data) => {
+//   return (
+//     <li className="caret">
+//       <label onClick={() => onToggle(data)}>
+//         {data.name} - count - {data.childrens.length}
+//       </label>
+//     </li>
+//   );
+// };
 
 export default TreeView;
